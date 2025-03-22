@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { File } from 'buffer';
 import { DocumentsService } from './documents.service';
 
 describe('DocumentsService', () => {
@@ -17,7 +18,7 @@ describe('DocumentsService', () => {
   });
   describe('Save CV', () => {
     it('should save the cv', async () => {
-      const file = { filename: 'test', path: 'test' } as Express.Multer.File;
+      const file = { filename: 'test', path: 'test' } as unknown as File;
       const document = await service.saveCV(file);
       expect(document).toBeDefined();
     });
